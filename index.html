@@ -1,520 +1,327 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Amirkhon Mahmadaminov - Portfolio</title>
-    <link rel="icon" href="favicon.ico" type="image/x-icon">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet">
-            <style>
+    <title>Amirkhon Mahmadaminov | Software Engineer Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
+    <style>
         :root {
-            --bg-gradient: linear-gradient(to bottom right, #111827, #000, #1f2937);
-            --text-light: #d1d5db;
-            --text-white: #ffffff;
-            --border-color: #4b5563;
-            --card-bg: rgba(0, 0, 0, 0.7);
+            --primary-color: #34d399; /* Emerald-400 for a premium feel */
         }
-
         body {
-            min-height: 100vh;
-            background: var(--bg-gradient);
-            color: var(--text-white);
-            font-family: 'Poppins', sans-serif;
-            padding: 1rem;
-            margin: 0;
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
+            font-family: 'Inter', sans-serif;
+            background-color: #171717; /* Neutral-900 */
+            color: #f8fafc; /* Slate-50 */
         }
-
-        a {
-            color: inherit;
-            text-decoration: none;
+        ::-webkit-scrollbar {
+            width: 8px;
         }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
+        ::-webkit-scrollbar-track {
+            background: #262626; /* Neutral-800 */
         }
-
-        header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 3rem;
+        ::-webkit-scrollbar-thumb {
+            background: var(--primary-color);
+            border-radius: 4px;
         }
-
-        header h1 {
-            font-size: 1.75rem;
-            font-weight: 800;
-        }
-
-        .social-links {
-            display: flex;
-            gap: 1rem;
-            color: var(--text-light);
-        }
-
-        .social-links a:hover {
-            color: var(--text-white);
-        }
-        
-        .social-links svg {
-            width: 20px;
-            height: 20px;
-        }
-
-        .hero {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: space-between;
-            margin-bottom: 4rem;
-            text-align: center;
-        }
-
-        .hero-text {
-            max-width: 36rem;
-        }
-
-        .hero-text h2 {
-            font-size: 2.5rem;
-            font-weight: 700;
-            line-height: 1.2;
-            margin-bottom: 1rem;
-            min-height: 4rem; /* Reserve space for text */
-        }
-
-        .hero-text p {
-            font-size: 1rem;
-            color: var(--text-light);
-            margin-bottom: 2rem;
-        }
-        
-        .hero-buttons {
-            display: flex;
-            gap: 1rem;
-            justify-content: center;
-        }
-
-        .hero-img {
-            width: 15rem;
-            margin-top: 2rem;
-        }
-
-        .btn {
+        .section-title {
+            position: relative;
             display: inline-block;
-            padding: 0.6rem 1.2rem;
+        }
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 50%;
+            height: 3px;
+            background-color: var(--primary-color);
             border-radius: 9999px;
-            font-weight: 600;
-            transition: background-color 0.2s;
-            cursor: pointer;
-            border: 1px solid transparent;
-            font-size: 0.9rem;
         }
-
-        .btn-primary {
-            background-color: var(--text-white);
-            color: #000;
-        }
-
-        .btn-primary:hover {
-            background-color: #e5e7eb;
-        }
-        
-        .btn-outline {
-            background-color: transparent;
-            color: var(--text-white);
-            border-color: var(--border-color);
-        }
-        
-        .btn-outline:hover {
-            background-color: var(--card-bg);
-        }
-
-        section {
-            margin-bottom: 3rem;
-        }
-
-        section h2 {
-            font-size: 1.5rem;
-            font-weight: 600;
-            margin-bottom: 1.5rem;
-        }
-
-        .card {
-            background-color: var(--card-bg);
-            border: 1px solid var(--border-color);
-            border-radius: 0.75rem;
-            padding: 1.5rem;
-            transition: border-color 0.2s;
-        }
-        
-        .card:hover {
-            border-color: #9ca3af;
-        }
-
-        .grid {
-            display: grid;
-            gap: 1.5rem;
-        }
-
-        .project-card h3, .experience-card h3, .certificate-card h3, .achievement-card h3 {
-            font-weight: 700;
-            font-size: 1.125rem;
-            color: var(--text-white);
-            margin-top: 0;
-            margin-bottom: 0.5rem;
-        }
-        
-        .project-card p, .experience-card p, .certificate-card p {
-            color: var(--text-light);
-            margin-top: 0;
-            margin-bottom: 1rem;
-            font-size: 0.9rem;
-        }
-        
-        .experience-card .date {
-            font-size: 0.8rem;
-            color: #9ca3af;
-            margin-bottom: 0.5rem;
-        }
-
-        .skills-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 1rem;
-        }
-
-        .skill-item {
-            background-color: var(--card-bg);
-            border: 1px solid var(--border-color);
-            border-radius: 1rem;
-            padding: 1rem;
-            text-align: center;
-            color: var(--text-white);
-            transition: transform 0.2s, border-color 0.2s;
-            font-size: 0.9rem;
-        }
-
-        .skill-item:hover {
-            transform: scale(1.05);
-            border-color: #9ca3af;
-        }
-
-        .achievements-list {
-            list-style: disc;
-            list-style-position: inside;
-            padding-left: 0;
-            margin: 0;
-        }
-        
-        .achievements-list li {
-            color: var(--text-light);
-            margin-bottom: 0.75rem;
-            font-size: 0.9rem;
-        }
-
-        footer {
-            text-align: center;
-            margin-top: 3rem;
-            font-size: 0.8rem;
-            color: #6b7281;
-        }
-        
-        /* Animations */
-        .fade-in-up {
+        .fade-in {
             opacity: 0;
             transform: translateY(20px);
-            transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
         }
-
-        .fade-in-up.visible {
+        .fade-in.appear {
             opacity: 1;
             transform: translateY(0);
         }
-
-        #typing-text::after {
-            content: '_';
-            display: inline-block;
-            animation: blink 0.7s infinite;
-            font-weight: normal;
-        }
-
-        @keyframes blink {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0; }
-        }
-        
-        .full-name {
-            display: none;
-        }
-
-        .short-name {
-            display: inline;
-        }
-
-        /* Responsive Design */
-        @media (min-width: 768px) {
-            body {
-                padding: 1.5rem;
-            }
-            
-            header {
-                margin-bottom: 4rem;
-            }
-
-            header h1 {
-                font-size: 2.25rem;
-            }
-            
-            .full-name {
-                display: inline;
-            }
-
-            .short-name {
-                display: none;
-            }
-            
-            .social-links {
-                gap: 1.5rem;
-            }
-            
-            .social-links svg {
-                width: 24px;
-                height: 24px;
-            }
-
-            .hero {
-                flex-direction: row;
-                text-align: left;
-                margin-bottom: 5rem;
-            }
-            
-            .hero-buttons {
-                justify-content: flex-start;
-            }
-
-            .hero-text h2 {
-                font-size: 3rem;
-                min-height: 5rem;
-            }
-
-            .hero-text p {
-                font-size: 1.125rem;
-            }
-
-            .hero-img {
-                width: 24rem;
-                margin-top: 0;
-            }
-            
-            .btn {
-                padding: 0.75rem 1.5rem;
-                font-size: 1rem;
-            }
-
-            section {
-                margin-bottom: 4rem;
-            }
-
-            section h2 {
-                font-size: 1.875rem;
-            }
-
-            .grid-cols-2 {
-                grid-template-columns: repeat(2, 1fr);
-            }
-
-            .skills-grid {
-                grid-template-columns: repeat(4, 1fr);
-            }
-            
-            .project-card p, .experience-card p, .certificate-card p, .achievements-list li, .skill-item {
-                font-size: 1rem;
+        @media (min-width: 1024px) {
+            #projects {
+                padding-bottom: 50vh;
             }
         }
     </style>
 </head>
+
 <body>
+    <header class="sticky top-0 z-50 bg-neutral-900/90 backdrop-blur-sm shadow-xl">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
+            <a href="#hero" class="text-2xl font-extrabold tracking-tight text-emerald-400 hover:text-emerald-300 transition duration-300">
+                Amirkhon M.
+            </a>
+            <nav class="hidden md:flex space-x-8 text-lg">
+                <a href="#about" class="hover:text-emerald-400 transition duration-300">About</a>
+                <a href="#skills" class="hover:text-emerald-400 transition duration-300">Skills</a>
+                <a href="#projects" class="hover:text-emerald-400 transition duration-300">Projects</a>
+                <a href="#contact" class="hover:text-emerald-400 transition duration-300">Contact</a>
+            </nav>
+            <button id="mobile-menu-button" class="md:hidden p-2 rounded-lg text-emerald-400 hover:bg-neutral-700 transition duration-300">
+                <i data-lucide="menu" class="w-6 h-6"></i>
+            </button>
+        </div>
+        <!-- Mobile Menu Overlay -->
+        <div id="mobile-menu" class="hidden md:hidden absolute w-full bg-neutral-800/95 shadow-lg">
+            <nav class="flex flex-col space-y-2 p-4 text-center">
+                <a href="#about" class="py-2 text-lg hover:text-emerald-400 transition duration-300 menu-link">About</a>
+                <a href="#skills" class="py-2 text-lg hover:text-emerald-400 transition duration-300 menu-link">Skills</a>
+                <a href="#projects" class="py-2 text-lg hover:text-emerald-400 transition duration-300 menu-link">Projects</a>
+                <a href="#contact" class="py-2 text-lg hover:text-emerald-400 transition duration-300 menu-link">Contact</a>
+            </nav>
+        </div>
+    </header>
 
-    <div class="container">
-        <!-- Header -->
-        <header class="fade-in-up">
-            <h1>
-                <span class="full-name">Amirkhon Mahmadaminov</span>
-                <span class="short-name">Amirkhon M.</span>
-            </h1>
-            <div class="social-links">
-                <a href="https://www.instagram.com/amirkhon.mh" title="Instagram">
-                    <svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path fill="currentColor" d="M12 0C8.74 0 8.333.015 7.053.072 5.775.132 4.905.333 4.14.63c-.784.297-1.459.717-2.126 1.384S.926 3.355.63 4.14C.333 4.905.131 5.775.072 7.053.012 8.333 0 8.74 0 12s.015 3.667.072 4.947c.06 1.277.261 2.148.558 2.913.297.784.717 1.459 1.384 2.126s1.342.83 2.126 1.126c.765.297 1.636.499 2.913.558C8.333 23.988 8.74 24 12 24s3.667-.015 4.947-.072c1.277-.06 2.148-.262 2.913-.558.784-.297 1.459-.718 2.126-1.384s.83-1.342 1.126-2.126c.297-.765.499-1.636.558-2.913.06-1.28.072-1.687.072-4.947s-.015-3.667-.072-4.947c-.06-1.277-.262-2.148-.558-2.913-.297-.784-.718-1.459-1.384-2.126S20.645.926 19.86.63c-.765-.297-1.636-.499-2.913-.558C15.667.012 15.26 0 12 0zm0 2.16c3.203 0 3.585.016 4.85.07 1.17.055 1.805.249 2.227.415.562.217.96.477 1.382.896.419.42.679.819.896 1.381.164.422.36 1.057.413 2.227.057 1.266.07 1.646.07 4.85s-.015 3.585-.074 4.85c-.056 1.17-.249 1.805-.416 2.227a3.48 3.48 0 0 1-.896 1.382c-.42.419-.82.679-1.381.896-.422.164-1.057.36-2.227.413-1.266.057-1.646.07-4.85.07s-3.585-.015-4.85-.07c-1.17-.055-1.805-.249-2.227-.415a3.49 3.49 0 0 1-1.382-.896c-.42-.42-.679-.82-.896-1.381-.165-.423-.36-1.057-.413-2.227-.057-1.266-.07-1.646-.07-4.85s.015-3.585.07-4.85c.055-1.17.249-1.805.415-2.227.217-.562.477-.96.896-1.382.42-.419.819-.679 1.381-.896.423-.165 1.057-.36 2.227-.413C8.415 2.176 8.797 2.16 12 2.16zm0 5.48c-2.49 0-4.5 2.01-4.5 4.5s2.01 4.5 4.5 4.5 4.5-2.01 4.5-4.5-2.01-4.5-4.5-4.5zm0 7.16c-1.473 0-2.66-1.187-2.66-2.66s1.187-2.66 2.66-2.66 2.66 1.187 2.66 2.66-1.187 2.66-2.66 2.66zm6.336-7.74c-.777 0-1.406.63-1.406 1.406s.63 1.406 1.406 1.406 1.406-.63 1.406-1.406c0-.777-.63-1.406-1.406-1.406z"/></svg>
+    <main class="min-h-screen">
+        <section id="hero" class="container mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-16 min-h-[60vh] flex items-center fade-in">
+            <div class="max-w-4xl">
+                <p class="text-xl sm:text-2xl text-emerald-400 mb-2">Hello, I'm</p>
+                <h1 class="text-6xl sm:text-7xl lg:text-8xl font-black mb-4 leading-tight">
+                    Mahmadaminov <span class="text-emerald-400">Amirkhon</span>
+                </h1>
+                <h2 class="text-3xl sm:text-4xl lg:text-5xl font-light text-neutral-300 mb-8">
+                    Software Engineer 
+                </h2>
+                <a href="#projects" class="inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-xl shadow-lg text-white bg-emerald-600 hover:bg-emerald-700 transition duration-300 transform hover:scale-105">
+                    View My Work
+                    <i data-lucide="arrow-right" class="w-5 h-5 ml-2"></i>
                 </a>
-                <a href="https://github.com/Amirkhon-M" title="GitHub">
-                    <svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path fill="currentColor" d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
-                </a>
-                <a href="https://www.linkedin.com/in/amirkhon-uz/" title="LinkedIn">
-                    <svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path fill="currentColor" d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.225 0z"/></svg>
-                </a>
-                <a href="mailto:amirkhon@umidly.com" title="Email">
-                    <svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path fill="currentColor" d="M22 6c0-1.1-.9-2-2-2H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6zm-2 0l-8 5-8-5h16zm0 12H4V8l8 5 8-5v10z"/></svg>
-                </a>
-            </div>
-        </header>
-
-        <!-- Hero Section -->
-        <section class="hero fade-in-up">
-            <div class="hero-text">
-                <h2>Hi, I’m <span id="typing-text"></span> 👋</h2>
-                <p>
-                    I’m a senior high school student and junior software engineer. I’m learning <strong>Python, Django Framework, Algorithms and Maths</strong>. I enjoy building projects, solving problems, and constantly challenging myself to try out something new.
-                </p>
-                <div class="hero-buttons">
-                    <a href="https://www.t.me/amirkhonuz" class="btn btn-primary">Get in Touch</a>
-                    <a href="resume.pdf" class="btn btn-outline">Download Resume</a>
-                </div>
-            </div>
-            <img src="profile.png" alt="Amirkhon Mahmadaminov" class="hero-img">
-        </section>
-
-        <!-- Skills -->
-        <section class="skills fade-in-up">
-            <h2>⚡ Skills</h2>
-            <div class="skills-grid">
-                <div class="skill-item">Python</div>
-                <div class="skill-item">C++ basics</div>
-                <div class="skill-item">Django</div>
             </div>
         </section>
 
-        <!-- Projects -->
-        <section class="projects fade-in-up">
-            <h2>💻 Projects</h2>
-            <div class="grid grid-cols-2">
-                <div class="card project-card">
-                    <h3>Umidly</h3>
-                    <p>I co-founded a startup with my friend.
-Umidly uses AI to replace mentors and
-provide affordable, yet effective and
-high-quality education to students. (<a href="http://umidly.com">umidly.com</a>)</p>
-                    <div class="project-buttons">
-                        <a href="umidly.pdf" class="btn btn-primary">View Pitch</a>
-                        <a href="http://umidly.com" class="btn btn-outline">View Project</a>
+        <section id="about" class="py-16 bg-neutral-800/50 fade-in">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                <h2 class="text-4xl font-bold section-title mb-12">About Me</h2>
+                <div class="grid md:grid-cols-2 gap-12 items-center">
+                    <div>
+                        <p class="text-lg text-neutral-300 leading-relaxed mb-4">
+                            I am a <strong>Senior high school student</strong> passionate about <strong>mathematics</strong>, <strong>algorithms</strong>, and <strong>coding</strong>. I thrive on deepening my knowledge of data structures, algorithms, and automation tools.
+                        </p>
+                        <p class="text-lg text-neutral-300 leading-relaxed mb-4">
+                            My focus is on <strong>building real-world projects</strong> in software engineering, leveraging my skills in Python, C++, and the Django stack. I am committed to continuous learning and technical excellence.
+                        </p>
+                        <div class="flex space-x-4 mt-6">
+                            <a href="https://linkedin.com/in/amirkhon-uz" target="_blank" class="text-emerald-400 hover:text-emerald-300 transition duration-300">
+                                <i data-lucide="linkedin" class="w-6 h-6"></i>
+                            </a>
+                            <a href="https://github.com/Amirkhon-M" target="_blank" class="text-emerald-400 hover:text-emerald-300 transition duration-300">
+                                <i data-lucide="github" class="w-6 h-6"></i>
+                            </a>
+                            <a href="https://leetcode.com/u/amirkhonuz" target="_blank" class="text-emerald-400 hover:text-emerald-300 transition duration-300">
+                                <i data-lucide="list-checks" class="w-6 h-6"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="p-8 bg-neutral-800 rounded-3xl shadow-2xl hidden md:flex flex-col items-center justify-center">
+                        <div class="w-full h-64 rounded-2xl mb-4 flex items-center justify-center overflow-hidden">
+                            <img src="profile.png" alt="Amirkhon Mahmadaminov" class="object-cover w-100 h-full">
+                        </div>
+                        <p class="text-center text-xl font-semibold text-neutral-200 mt-4">Focused on scalable solutions.</p>
                     </div>
                 </div>
-                <div class="card project-card">
-                    <h3>HikVision Event Listener</h3>
-                    <p>A full guide by me on working with
-ISAPI HikVision ACS Face terminals.
-Also, I created a demo telegram bot
-and demo website with open source
-code. 
-</p>
-                    <a href="https://github.com/Amirkhon-M/hikvision-demo" class="btn btn-outline">View on GitHub</a>
+            </div>
+        </section>
+
+        <section id="skills" class="py-16 fade-in">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                <h2 class="text-4xl font-bold section-title mb-12">Technical Expertise</h2>
+                <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+
+                    <div class="p-6 bg-neutral-800 rounded-xl shadow-lg border border-neutral-700 hover:border-emerald-500 transition duration-300 transform hover:scale-[1.02]">
+                        <i data-lucide="code" class="w-8 h-8 text-emerald-400 mb-3"></i>
+                        <h3 class="text-xl font-semibold mb-2">Languages</h3>
+                        <p class="text-neutral-300">Python, C++ (Algorithms & DSA)</p>
+                    </div>
+
+                    <div class="p-6 bg-neutral-800 rounded-xl shadow-lg border border-neutral-700 hover:border-emerald-500 transition duration-300 transform hover:scale-[1.02]">
+                        <i data-lucide="server" class="w-8 h-8 text-emerald-400 mb-3"></i>
+                        <h3 class="text-xl font-semibold mb-2">Backend/Stack</h3>
+                        <p class="text-neutral-300">Django (Full-Stack development)</p>
+                    </div>
+
+                    <div class="p-6 bg-neutral-800 rounded-xl shadow-lg border border-neutral-700 hover:border-emerald-500 transition duration-300 transform hover:scale-[1.02]">
+                        <i data-lucide="database" class="w-8 h-8 text-emerald-400 mb-3"></i>
+                        <h3 class="text-xl font-semibold mb-2">Databases</h3>
+                        <p class="text-neutral-300">PostgreSQL, MySQL</p>
+                    </div>
+
+                    <div class="p-6 bg-neutral-800 rounded-xl shadow-lg border border-neutral-700 hover:border-emerald-500 transition duration-300 transform hover:scale-[1.02]">
+                        <i data-lucide="cloud" class="w-8 h-8 text-emerald-400 mb-3"></i>
+                        <h3 class="text-xl font-semibold mb-2">Cloud Services</h3>
+                        <p class="text-neutral-300">AWS</p>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <!-- Experience -->
-        <section class="experience fade-in-up">
-            <h2>📦 Experience</h2>
-            <div class="grid grid-cols-2">
-                <div class="card experience-card">
-                    <h3>Software Engineer</h3>
-                    <p>58Apps</p>
-                    <p class="date">2025-Present</p>
-                </div>
-                <div class="card experience-card">
-                    <h3>ESL Tutor</h3>
-                    <p>Preply</p>
-                    <p class="date">2024-2025</p>
-                </div>
-                <div class="card experience-card">
-                    <h3>Graphic Designer</h3>
-                    <p>UpWork</p>
-                    <p class="date">2021-2022</p>
+        <section id="projects" class="py-16 bg-neutral-800/50 fade-in">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                <h2 class="text-4xl font-bold section-title mb-12">Featured Projects</h2>
+                <div class="lg:relative space-y-8 lg:space-y-0">
+
+                    <div class="lg:sticky lg:top-20 p-8 bg-neutral-800 rounded-2xl shadow-2xl border border-neutral-700 hover:border-emerald-500 transition duration-300 z-10 lg:mb-12">
+                        <h3 class="text-3xl font-bold mb-3 text-emerald-400">IDonly</h3>
+                        <p class="text-lg text-gray-400 mb-4">Project at 58Apps (Team Size: 3 SEs, 1 BA)</p>
+                        <ul class="list-disc list-inside text-neutral-300 space-y-2">
+                            <li><strong>Automation Tools:</strong> Developed a <strong>HikVision device listening script</strong> for employee face control, streamlining access management.</li>
+                            <li><strong>Front-end Contribution:</strong> Actively contributed to the <strong>front-end development</strong> of the application.</li>
+                        </ul>
+                        <div class="mt-6 flex flex-wrap gap-2">
+                            <span class="px-3 py-1 text-sm font-medium bg-emerald-900/50 text-emerald-300 rounded-full">Python</span>
+                            <span class="px-3 py-1 text-sm font-medium bg-emerald-900/50 text-emerald-300 rounded-full">Automation</span>
+                            <span class="px-3 py-1 text-sm font-medium bg-emerald-900/50 text-emerald-300 rounded-full">Front-end</span>
+                        </div>
+                    </div>
+
+                    <div class="lg:sticky lg:top-20 p-8 bg-neutral-800 rounded-2xl shadow-2xl border border-neutral-700 hover:border-emerald-500 transition duration-300 z-20 lg:mb-12">
+                        <h3 class="text-3xl font-bold mb-3 text-emerald-400">Umidly</h3>
+                        <p class="text-lg text-gray-400 mb-4">Project at 58Apps (Team Size: 2 BE, 1 FE)</p>
+                        <ul class="list-disc list-inside text-neutral-300 space-y-2">
+                            <li><strong>AI Integration:</strong> Successfully implemented <strong>AI integrations</strong> into the platform to enhance core functionality.</li>
+                        </ul>
+                        <div class="mt-6 flex flex-wrap gap-2">
+                            <span class="px-3 py-1 text-sm font-medium bg-emerald-900/50 text-emerald-300 rounded-full">Django</span>
+                            <span class="px-3 py-1 text-sm font-medium bg-emerald-900/50 text-emerald-300 rounded-full">AI/ML</span>
+                            <span class="px-3 py-1 text-sm font-medium bg-emerald-900/50 text-emerald-300 rounded-full">Backend</span>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <!-- Certificates -->
-        <section class="certificates fade-in-up">
-            <h2>🎓 Certificates</h2>
-            <div class="grid grid-cols-2">
-                <div class="card certificate-card">
-                    <h3>IELTS 7.5</h3>
-                    <p>L8.5 R7.5 W6.5 S7.5</p>
-                </div>
-                <div class="card certificate-card">
-                    <h3>SAT 1240</h3>
-                    <p>Reading & Writing 630 | Math 610</p>
-                </div>
-                <div class="card certificate-card">
-                    <h3>Preply Professional Tutor Certificate</h3>
-                    <p>1 year of experience in teaching.</p> 
-                </div>
-                <div class="card certificate-card">
-                    <h3>Ardmore Certificate</h3>
-                    <p>7 Day Practical English Course in the UK</p>
-                </div>
-                <div class="card certificate-card">
-                    <h3>Django 101</h3>
-                    <p>SkillUp</p>
+        <section id="education" class="py-16 fade-in">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                <h2 class="text-4xl font-bold section-title mb-12">Education & Achievements</h2>
+                <div class="grid md:grid-cols-2 gap-12">
+                    <div>
+                        <h3 class="text-2xl font-semibold mb-6 text-emerald-300">Key Achievements</h3>
+                        <div class="space-y-6">
+                            <div class="bg-neutral-800 p-6 rounded-xl shadow-lg">
+                                <p class="font-bold text-xl mb-1">National Presidential English Contest 2023</p>
+                                <p class="text-emerald-400 text-lg">I Place (Regional & State), IV Place (National)</p>
+                                <p class="text-gray-400 mt-2">Awarded a 1-week trip to the UK.</p>
+                            </div>
+                            <div class="bg-neutral-800 p-6 rounded-xl shadow-lg">
+                                <p class="font-bold text-xl mb-1">Academic Proficiency</p>
+                                <p class="text-neutral-300">IELTS <strong>7.5</strong> | SAT <strong>1240</strong></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <h3 class="text-2xl font-semibold mb-6 text-emerald-300">Relevant Certificates</h3>
+                        <ul class="space-y-3 text-lg text-neutral-300">
+                            <li class="p-4 bg-neutral-800 rounded-lg shadow"><i data-lucide="award" class="w-5 h-5 inline mr-3 text-emerald-400"></i>Preply - Professional Tutor</li>
+                            <li class="p-4 bg-neutral-800 rounded-lg shadow"><i data-lucide="award" class="w-5 h-5 inline mr-3 text-emerald-400"></i>SkillUp - Django 101</li>
+                            <li class="p-4 bg-neutral-800 rounded-lg shadow"><i data-lucide="award" class="w-5 h-5 inline mr-3 text-emerald-400"></i>Ardmore Practical English Course in the UK</li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <!-- Achievements -->
-        <section class="achievements fade-in-up">
-            <h2>🏆 Achievements</h2>
-            <div class="card achievement-card">
-                <h3>Presidential English Contest 2023</h3>
-                <a href="https://kun.uz/news/2023/11/21/chet-tilini-oqitish-boyicha-eng-yaxshi-deb-topilgan-maktab-oqituvchilari-va-oquvchilari-buyuk-britaniyaga-jonab-ketdi?q=%2Fuz%2Fnews%2F2023%2F11%2F21%2Fchet-tilini-oqitish-boyicha-eng-yaxshi-deb-topilgan-maktab-oqituvchilari-va-oquvchilari-buyuk-britaniyaga-jonab-ketdi" class="btn btn-outline">Read More</a>
+        <section id="contact" class="py-16 bg-neutral-800/50 fade-in">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                <h2 class="text-4xl font-bold section-title mx-auto mb-12">Get In Touch</h2>
+                <p class="text-xl text-neutral-300 mb-8 max-w-2xl mx-auto">
+                    I'm currently focused on software engineering and algorithms. If you have an exciting project or opportunity, feel free to reach out!
+                </p>
+
+                <a href="mailto:amirkhonmahmadaminov@gmail.com" class="inline-flex items-center justify-center px-8 py-4 border border-transparent text-lg font-bold rounded-xl shadow-lg text-white bg-emerald-600 hover:bg-emerald-700 transition duration-300 transform hover:scale-105">
+                    <i data-lucide="mail" class="w-6 h-6 mr-3"></i>
+                    Email Me
+                </a>
             </div>
         </section>
+    </main>
 
-        <!-- Footer -->
-        <footer class="fade-in-up">
-            © 2025 Amirkhon Mahmadaminov.
-        </footer>
-    </div>
+    <footer class="bg-neutral-900 py-8">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center text-gray-400">
+            <p class="text-sm mb-4 md:mb-0">&copy; <span id="current-year"></span> Amirkhon Mahmadaminov. All rights reserved.</p>
+            <div class="flex space-x-6">
+                <a href="https://linkedin.com/in/amirkhon-uz" target="_blank" class="hover:text-emerald-400 transition duration-300">
+                    <i data-lucide="linkedin" class="w-6 h-6"></i>
+                </a>
+                <a href="https://github.com/Amirkhon-M" target="_blank" class="hover:text-emerald-400 transition duration-300">
+                    <i data-lucide="github" class="w-6 h-6"></i>
+                </a>
+                <a href="https://leetcode.com/u/amirkhonuz" target="_blank" class="hover:text-emerald-400 transition duration-300">
+                    <i data-lucide="list-checks" class="w-6 h-6"></i>
+                </a>
+                <a href="mailto:amirkhonmahmadaminov@gmail.com" class="hover:text-emerald-400 transition duration-300">
+                    <i data-lucide="mail" class="w-6 h-6"></i>
+                </a>
+            </div>
+        </div>
+    </footer>
 
     <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            const animatedElements = document.querySelectorAll('.fade-in-up');
+        lucide.createIcons();
 
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach((entry, index) => {
-                    if (entry.isIntersecting) {
-                        setTimeout(() => {
-                            entry.target.classList.add('visible');
-                        }, index * 100);
-                        observer.unobserve(entry.target);
-                    }
-                });
-            }, {
-                threshold: 0.1
-            });
+        document.getElementById('current-year').textContent = new Date().getFullYear();
 
-            animatedElements.forEach(el => {
-                observer.observe(el);
-            });
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const menuLinks = document.querySelectorAll('.menu-link');
+        const menuIcon = mobileMenuButton.querySelector('i');
 
-            // Typing effect
-            const typingText = "Amirkhon";
-            const typingElement = document.getElementById('typing-text');
-            let charIndex = 0;
-
-            function type() {
-                if (charIndex < typingText.length) {
-                    typingElement.textContent += typingText.charAt(charIndex);
-                    charIndex++;
-                    setTimeout(type, 150);
-                }
+        mobileMenuButton.addEventListener('click', () => {
+            const isHidden = mobileMenu.classList.toggle('hidden');
+            if (isHidden) {
+                menuIcon.setAttribute('data-lucide', 'menu');
+            } else {
+                menuIcon.setAttribute('data-lucide', 'x');
             }
-            setTimeout(type, 500);
+            lucide.createIcons({
+                nodes: [menuIcon]
+            });
+        });
+
+        menuLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+                menuIcon.setAttribute('data-lucide', 'menu');
+                lucide.createIcons({
+                    nodes: [menuIcon]
+                });
+            });
+        });
+
+        const faders = document.querySelectorAll('.fade-in');
+        const appearOptions = {
+            threshold: 0,
+            rootMargin: "0px 0px -100px 0px"
+        };
+
+        const appearOnScroll = new IntersectionObserver(function(entries, appearOnScroll) {
+            entries.forEach(entry => {
+                if (!entry.isIntersecting) {
+                    return;
+                } else {
+                    entry.target.classList.add('appear');
+                    appearOnScroll.unobserve(entry.target);
+                }
+            });
+        }, appearOptions);
+
+        faders.forEach(fader => {
+            appearOnScroll.observe(fader);
+        });
+
+        document.addEventListener('DOMContentLoaded', () => {
+            document.getElementById('hero').classList.add('appear');
         });
     </script>
-
 </body>
 </html>
